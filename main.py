@@ -38,6 +38,8 @@ def get_reviews(start_page: int, end_page: int, url: str) -> list[tuple[str, str
         except Exception as e:
             print(f"Error fetching reviews from page {page}: {e}")
     return reviews
+
+
 user_link = input("Enter Product Url", "")
 title = requests.get(user_link)
 soup = BeautifulSoup(title.content, "html.parser")
