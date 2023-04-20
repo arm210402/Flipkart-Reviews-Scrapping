@@ -49,7 +49,7 @@ product_name = soup.find('span', {'class': 'B_NuCI'}).text
 # print("Product Name:", product_name)
 print("Number of Reviews:", reviews_count)
 
-# Replace '20' with any number you want
+# Replace '20' with any number of reviews you want 10 per page (here 20*10= 200 reviews will be generated)
 reviews = get_reviews(1, 20, user_link)
 
 # Save reviews to a CSV file
