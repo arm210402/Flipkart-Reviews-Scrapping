@@ -22,6 +22,10 @@ def get_reviews(start_page: int, end_page: int, url: str) -> list[tuple[str, str
         try:
             response = requests.get(url)
             soup = BeautifulSoup(response.content, "html.parser")
+            # reviews_count = soup.find("span", class_="_2_R_DZ").text.strip().split("&")[1].strip().split()[0].replace(',','')
+            # product_name = soup.find('span', {'class': 'B_NuCI'}).text
+            # print("Product Name:", product_name)
+            # print("Number of Reviews:", reviews_count)
             review_containers = soup.select(".t-ZTKy")
 
             rating_containers = soup.select("._3LWZlK")
@@ -43,13 +47,6 @@ def get_reviews(start_page: int, end_page: int, url: str) -> list[tuple[str, str
 user_link = input("Enter Product Url", "")
 title = requests.get(user_link)
 soup = BeautifulSoup(title.content, "html.parser")
-
-reviews_count = soup.find("span", class_="_2_R_DZ").text.strip().split("&")[1].strip().split()[0].replace(
-                ',',
-                '')
-product_name = soup.find('span', {'class': 'B_NuCI'}).text
-# print("Product Name:", product_name)
-print("Number of Reviews:", reviews_count)
 
 # Replace '20' with any number of reviews you want 10 per page (here 20*10= 200 reviews will be generated)
 reviews = get_reviews(1, 20, user_link)
